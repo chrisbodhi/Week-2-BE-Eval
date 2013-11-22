@@ -12,14 +12,45 @@ describe Tennis::Game do
       expect(game.player2).to be_a(Tennis::Player)
     end
 
-    it 'sets the opponent for each player'
+    it 'sets the opponent for each player' do 
+      game.player1.opponent = game.player2
+      game.player2.opponent = game.player1
+
+      expect(game.player1.opponent).to eq game.player2
+      expect(game.player2.opponent).to eq game.player1
+    end
   end
 
   describe '#wins_ball' do
     it 'increments the points of the winning player' do
-      game.wins_ball(1)
+      game.wins_ball(game.player1)
+      game.player1.points += 1
 
-      expect(game.player1.points).to eq(1)
+      expect(game.player1.points).to eq(2)
+    end
+  end
+
+  describe '#win' do
+    it 'returns a win exclamation when called' do
+      expect(game.win).to eq 'Win!'
+    end
+  end
+
+  describe '#easy_win' do
+    it 'calls the #win function if the player wins by at least two points' do
+      game.player1.points = 4
+      game.player2.points < 3
+
+      expect(game.easy_win(game.player1)).to eq 'Win!'
+    end
+  end
+
+  describe '#deuce' do
+    it 'notes the condition of deuce' do 
+      game.player1.points = 3
+      game.player2.points = game.player1.points
+
+      expect(game.deuce).to eq 'Deuce.'
     end
   end
 end
@@ -62,11 +93,23 @@ describe Tennis::Player do
     end
     
     context 'when points is 2' do
-      it 'returns thirty'  
+      it 'returns thirty' do 
+        player.points = 2
+
+        expect(player.score).to eq('thirty')
+      end  
     end
     
     context 'when points is 3' do
-      it 'returns forty' 
+      it 'returns forty' do 
+        player.points = 3
+
+        expect(player.score).to eq('forty')
+      end
     end
   end
+
+
+
+  
 end
