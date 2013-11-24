@@ -69,6 +69,27 @@ describe Tennis::Game do
     end
   end
 
+  describe '#play_sports'do
+    context 'when' do 
+      it '' do
+        
+      end
+    end
+
+    context 'when' do 
+      it '' do
+
+      end
+    end
+
+    context 'when' do 
+      it '' do
+
+      end
+    end
+
+  end
+
 end
 
 describe Tennis::Player do

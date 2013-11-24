@@ -10,6 +10,11 @@ module Tennis
       @player2.opponent = @player1
     end
 
+    # Returns the winner of a game of tennis. Uses method `who_won?` to 
+    # determine winner of each match.
+    def play_sports
+    end
+
     # Records a win for a ball in a game.
     #
     # winner - The Instance representing the winning player.
