@@ -57,12 +57,15 @@ describe Tennis::Game do
   describe '#advantage' do
     it 'notes an advantage to player who has won the ball after deuce' do
       game.deuce
-      # game.player1.points = 3
-      # game.player2.points = game.player1.points
-      # game.player1.points = 4
       game.player1.points += 1
 
       expect(game.advantage(game.player1)).to eq 'Advantage!'
+    end
+  end
+
+  describe '#who_won?' do
+    it 'picks a random number (1 or 2) to decide which player won the ball' do
+      expect(game.who_won?).to eq game.player1
     end
   end
 
