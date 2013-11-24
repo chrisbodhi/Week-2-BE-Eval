@@ -42,9 +42,10 @@ module Tennis
     end
 
     def advantage(player)
-      deuce
-      player.points +=1
-      return 'Advantage!'
+      if deuce
+        player.points +=1
+        return 'Advantage!'
+      end
     end
 
   end
