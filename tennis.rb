@@ -23,12 +23,12 @@ module Tennis
       winner.points += 1
     end
 
-        # The situation for a deuce, returns 'deuce', calls ----?
+        # The situation for a deuce, returns a String noting the score as deuce
     def deuce
       @player1.points >= 3
       @player2.points = @player1.points
 
-      return 'Deuce.'
+      return 'The score is deuce.'
     end
 
     # Returns an exclamation for the winning player.
@@ -39,6 +39,12 @@ module Tennis
     # Easiest situation for winning a game.
     def easy_win(player)
       win if player.points == 4 && player.opponent.points < 3
+    end
+
+    def advantage(player)
+      deuce
+      player.points +=1
+      return 'Advantage!'
     end
 
   end

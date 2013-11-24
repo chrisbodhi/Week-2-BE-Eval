@@ -50,9 +50,22 @@ describe Tennis::Game do
       game.player1.points = 3
       game.player2.points = game.player1.points
 
-      expect(game.deuce).to eq 'Deuce.'
+      expect(game.deuce).to eq 'The score is deuce.'
     end
   end
+
+  describe '#advantage' do
+    it 'notes an advantage to player who has won the ball after deuce' do
+      game.deuce
+      # game.player1.points = 3
+      # game.player2.points = game.player1.points
+      # game.player1.points = 4
+      game.player1.points += 1
+
+      expect(game.advantage(game.player1)).to eq 'Advantage!'
+    end
+  end
+
 end
 
 describe Tennis::Player do
